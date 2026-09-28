@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Code Rescue | Class X</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#eef4ff;color:#172033}
+.app{max-width:1050px;margin:auto;padding:20px}.hero{background:linear-gradient(135deg,#173b8f,#2563eb);color:#fff;border-radius:24px;padding:28px;box-shadow:0 12px 30px #173b8f30}
+.hero h1{margin:0 0 7px;font-size:32px}.hero p{margin:0;opacity:.92}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.chip{padding:7px 11px;border-radius:99px;background:#ffffff1f;border:1px solid #ffffff35;font-size:13px}
+.status{margin:14px 0;padding:11px 14px;background:#fff;border-radius:14px;font-size:13px;box-shadow:0 5px 18px #173b8f12}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#f59e0b;margin-right:7px}.ready .dot{background:#16a34a}
+.progressbox{background:#fff;border-radius:18px;padding:15px 18px;margin-bottom:18px;box-shadow:0 5px 18px #173b8f12}.ptop{display:flex;justify-content:space-between;font-weight:700}.progress{height:9px;background:#e5e7eb;border-radius:20px;margin-top:9px;overflow:hidden}.bar{height:100%;width:33%;background:#2563eb;transition:.3s}
+.card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 8px 25px #173b8f12}.challenge{display:none}.challenge.active{display:block}
+.label{display:inline-block;background:#dbeafe;color:#1d4ed8;font-weight:800;padding:7px 12px;border-radius:10px;font-size:12px}h2{margin:13px 0 8px;font-size:26px}.question{font-size:17px;line-height:1.6;color:#374151}.instruction{background:#f8fafc;border-left:4px solid #2563eb;padding:12px 15px;border-radius:8px;margin:16px 0}
+.editor{width:100%;min-height:230px;background:#101827;color:#e5e7eb;border:0;border-radius:14px;padding:18px;font:15px/1.6 Consolas,Monaco,monospace;resize:vertical;outline:none}.inputbox{width:100%;padding:13px;border:2px solid #dbe3ef;border-radius:12px;font-size:16px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}button{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}.run{background:#16a34a;color:#fff}.check{background:#2563eb;color:#fff}.next{background:#173b8f;color:#fff}.next:disabled{opacity:.45;cursor:not-allowed}.reset{background:#e5e7eb}
+.output{background:#0b1220;color:#d1fae5;border-radius:14px;padding:16px;min-height:75px;margin-top:14px;font:14px/1.55 Consolas,monospace;white-space:pre-wrap}.feedback{margin-top:14px;padding:14px;border-radius:12px;font-weight:700}.good{background:#dcfce7;color:#166534}.bad{background:#fee2e2;color:#991b1b}.hidden{display:none}.completion{text-align:center}.big{font-size:50px;font-weight:900;color:#2563eb}
+.footer{text-align:center;color:#64748b;font-size:13px;padding:15px}
+@media(max-width:650px){.app{padding:11px}.hero{padding:22px}.hero h1{font-size:25px}.card{padding:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+<section class="hero">
+<h1>🐍 Python Code Rescue</h1>
+<p><b>Class X • ICT Learning Fair</b></p>
+<div class="chips"><span class="chip">💻 Coding</span><span class="chip">🐞 Debugging</span><span class="chip">🔮 Output Prediction</span></div>
+</section>
+
+<div class="status" id="status"><span class="dot"></span><b id="statusText">Starting Python...</b> — The Run buttons will activate when Python is ready.</div>
+
+<div class="progressbox">
+<div class="ptop"><span id="progressText">Challenge 1 of 3</span><span>⭐ Score: <span id="score">0</span>/3</span></div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<section class="card challenge active" id="c1">
+<span class="label">CHALLENGE 1 • CODING</span>
+<h2>➕ Add Two Numbers</h2>
+<div class="question">Write a Python program that asks the user to input two numbers and displays their sum.</div>
+<div class="instruction">💡 <b>Hint:</b> Write your Python program normally. When you click <b>Run Python</b>, the program will ask you for each <code>input()</code> value just like Python IDLE.</div>
+<textarea class="editor" id="code1"></textarea>
+
+<div class="actions"><button class="run" id="run1" onclick="runPython1()" disabled>▶ Run Python</button><button class="check" type="button" onclick="check1()">✓ Check Challenge</button></div>
+<div class="small" style="margin-top:10px">Run your program first, then click <b>Check Challenge</b> when you are satisfied with your solution.</div>
+<div class="output" id="out1"></div>
+<div id="fb1"></div>
+<div class="actions"><button class="next" id="next1" onclick="go(2)" disabled>Next Challenge →</button></div>
+</section>
+
+<section class="card challenge" id="c2">
+<span class="label">CHALLENGE 2 • DEBUGGING</span>
+<h2>🐞 Rescue the Code</h2>
+<div class="question">Fix the error so that the program prints the numbers <b>1 to 5</b>.</div>
+<div class="instruction">Edit the code and run it. This uses the actual Python interpreter in your browser.</div>
+<textarea class="editor" id="code2">for i in range(1, 6)
+    print(i)</textarea>
+<div class="actions"><button class="run" id="run2" onclick="runPython2()" disabled>▶ Run Python</button><button class="check" onclick="check2()">✓ Check Challenge</button></div>
+<div class="output" id="out2">Click ▶ Run Python to execute the code and display the output here.</div>
+<div id="fb2"></div>
+<div class="actions"><button class="next" id="next2" onclick="go(3)" disabled>Next Challenge →</button></div>
+</section>
+
+<section class="card challenge" id="c3">
+<span class="label">CHALLENGE 3 • PREDICT THE OUTPUT</span>
+<h2>🔮 What Will Python Print?</h2>
+<div class="question">Predict the output <b>before</b> running the code.</div>
+<div class="editor" style="min-height:145px">numbers = [10, 20, 30, 40]
+numbers.append(50)
+print(numbers)</div>
+<div class="instruction">What will Python display?</div>
+<input class="inputbox" id="prediction" placeholder="Type your predicted output">
+<div class="actions"><button class="check" onclick="check3()">✓ Check Prediction</button></div>
+<div class="output" id="out3">Your prediction result will appear here.</div>
+<div id="fb3"></div>
+<div class="actions"><button class="next" id="finish" onclick="finish()" disabled>Finish Station 🏆</button></div>
+</section>
+
+<section class="card challenge" id="complete" style="text-align:center">
+<div style="font-size:55px">🎉</div><h2>Python Code Rescue Complete!</h2>
+<div class="big"><span id="finalScore">0</span>/3</div>
+<p id="finalMessage"></p><button class="reset" onclick="location.reload()">↻ Try Again</button>
+</section>
+<div class="footer">Class X ICT • Python Code Rescue • Learning Fair</div>
+</div>
+
+<script>
+let score=0, passed=[false,false,false];
+
+function feedback(id,text,good){let e=document.getElementById(id);e.className='feedback '+(good?'good':'bad');e.textContent=text}
+function addScore(n){if(!passed[n-1]){passed[n-1]=true;score++;document.getElementById('score').textContent=score}}
+function go(n){document.querySelectorAll('.challenge').forEach(x=>x.classList.remove('active'));document.getElementById('c'+n).classList.add('active');document.getElementById('progressText').textContent='Challenge '+n+' of 3';document.getElementById('bar').style.width=(n/3*100)+'%';window.scrollTo({top:0,behavior:'smooth'})}
+
+async function runPython(code, inputs){
+  if(!window.pyodide){
+    throw new Error("Python is not ready yet. Please wait for the green 'Python is ready!' message.");
+  }
+
+  // Pass the student's code and test inputs into Python.
+  window.pyodide.globals.set("_student_code", code);
+  window.pyodide.globals.set("_student_inputs", window.pyodide.toPy(inputs));
+
+  const runner = `
+import builtins, io, contextlib, traceback
+
+_values = list(_student_inputs)
+_position = 0
+
+def student_input(prompt=""):
+    global _position
+    if _position >= len(_values):
+        raise EOFError("Not enough input values. Please enter two values, e.g. 10, 20")
+    value = str(_values[_position])
+    _position += 1
+    print(prompt + value)
+    return value
+
+_original_input = builtins.input
+builtins.input = student_input
+output = io.StringIO()
+
+try:
+    with contextlib.redirect_stdout(output):
+        exec(_student_code, {})
+    result = output.getvalue()
+except Exception:
+    result = output.getvalue() + traceback.format_exc()
+finally:
+    builtins.input = _original_input
+
+result
+`;
+
+  return await window.pyodide.runPythonAsync(runner);
+}
+
+async function runPython1(){
+  const out=document.getElementById("out1");
+
+  if(!pyodide){
+    feedback("fb1","❌ Python is still loading. Please wait until Python is ready.",false);
+    return;
+  }
+
+  // Run the student's program interactively, like Python IDLE.
+  // Every input() call opens a prompt so the student can type the value.
+  const code=document.getElementById("code1").value;
+  out.textContent="▶ Running Python...\n\n";
+
+  try{
+    pyodide.globals.set("_student_code", code);
+
+    const runner = `
+import builtins, io, contextlib, traceback
+
+_original_input = builtins.input
+_original_print = builtins.print
+_buffer = io.StringIO()
+
+def _interactive_input(prompt=""):
+    # Return a special marker to JavaScript; JavaScript will handle
+    # the actual browser prompt before execution continues.
+    return _original_input(prompt)
+
+# The code is executed through a custom JavaScript/Python bridge.
+`;
+
+    // Find input() calls and ask for their values one at a time.
+    // This gives the student the familiar "Enter number:" interaction.
+    const inputPattern = /input\s*\(\s*(?:"([^"]*)"|'([^']*)')?\s*\)/g;
+    let match;
+    let prompts=[];
+    while((match=inputPattern.exec(code))!==null){
+      prompts.push(match[1] !== undefined ? match[1] : (match[2] || ""));
+    }
+
+    let values=[];
+    for(let i=0;i<prompts.length;i++){
+      const answer=window.prompt(prompts[i] || "Enter value:");
+      if(answer===null){
+        out.textContent="Program cancelled by student.";
+        feedback("fb1","ℹ️ Program was cancelled.",false);
+        return;
+      }
+      values.push(answer);
+    }
+
+    pyodide.globals.set("_interactive_values", pyodide.toPy(values));
+
+    const execCode = `
+import builtins, io, contextlib, traceback
+
+_values=list(_interactive_values)
+_index=0
+_output=io.StringIO()
+
+def _student_input(prompt=""):
+    global _index
+    if _index >= len(_values):
+        raise EOFError("Input value was not provided.")
+    value=_values[_index]
+    _index += 1
+    return value
+
+builtins.input=_student_input
+
+try:
+    with contextlib.redirect_stdout(_output):
+        exec(_student_code, {})
+    _final_output=_output.getvalue()
+except Exception:
+    _final_output=_output.getvalue()+traceback.format_exc()
+finally:
+    builtins.input=input
+
+_final_output
+`;
+
+    const result=await pyodide.runPythonAsync(execCode);
+
+    // Display the input prompts and values in the output area,
+    // followed by the actual Python output.
+    let display="";
+    for(let i=0;i<prompts.length;i++){
+      display += (prompts[i] || "Enter value:") + String(values[i]) + "\n";
+    }
+    display += result || "(Program finished with no output.)";
+
+    out.textContent=display;
+
+    if(result && result.includes("Traceback")){
+      feedback("fb1","❌ Python found an error. Read the error shown in the output.",false);
+    }else{
+      feedback("fb1","✅ Program executed successfully! Check your output above.",true);
+    }
+
+  }catch(e){
+    out.textContent=String(e);
+    feedback("fb1","❌ The program could not be executed. Check the Python error above.",false);
+  }
+}
+
+function check1(){
+  const code = document.getElementById("code1").value.trim();
+  const nextButton = document.getElementById("next1");
+
+  // Accept normal correct solutions such as:
+  // num1 = int(input(...))
+  // num2 = int(input(...))
+  // sum = num1 + num2
+  // print(sum)
+  const hasInput = (code.match(/\binput\s*\(/g) || []).length >= 2;
+  const hasAddition = /(?:num1\s*\+\s*num2|num2\s*\+\s*num1)/.test(code);
+  const hasPrint = /\bprint\s*\(/.test(code);
+
+  // Also accept a correct solution using different variable names by
+  // checking that the code has at least two input calls, an addition
+  // operation, and a print statement.
+  const hasGenericAddition = /[A-Za-z_]\w*\s*\+\s*[A-Za-z_]\w*/.test(code);
+
+  if(hasInput && (hasAddition || hasGenericAddition) && hasPrint){
+    addScore(1);
+    feedback(
+      "fb1",
+      "🎉 Correct! Your program takes two numbers, adds them, and displays the result.",
+      true
+    );
+    nextButton.disabled = false;
+  }else{
+    feedback(
+      "fb1",
+      "❌ Your program is not complete yet. Make sure you input two numbers, add them, and print the result.",
+      false
+    );
+    nextButton.disabled = true;
+  }
+}
+
+async function runPython2(){
+  const out = document.getElementById("out2");
+
+  if(!window.pyodide){
+    out.textContent = "Python is still loading. Please wait until Python is ready.";
+    feedback("fb2","❌ Python is still loading. Please wait a moment.",false);
+    return;
+  }
+
+  const code = document.getElementById("code2").value;
+  out.textContent = "▶ Running Python...\n\n";
+
+  try{
+    // Challenge 2 has no input(), so run the student's code directly.
+    const result = await runPython(code, []);
+
+    if(result && result.includes("Traceback")){
+      out.textContent = result;
+      feedback("fb2","❌ Python found an error. Read the error shown in the output.",false);
+    }else{
+      out.textContent = result || "(Your program produced no output.)";
+      feedback("fb2","✅ Program executed successfully! Check the output above.",true);
+    }
+  }catch(error){
+    out.textContent = String(error);
+    feedback("fb2","❌ The program could not be executed. Check the error above.",false);
+  }
+}
+
+function check2(){
+  const code = document.getElementById("code2").value.trim();
+  const nextButton = document.getElementById("next2");
+
+  const correctLoop =
+    /for\s+i\s+in\s+range\s*\(\s*1\s*,\s*6\s*\)\s*:/.test(code) &&
+    /print\s*\(\s*i\s*\)/.test(code);
+
+  if(correctLoop){
+    addScore(2);
+    feedback(
+      "fb2",
+      "🎉 Code rescued! You fixed the syntax error correctly.",
+      true
+    );
+    nextButton.disabled = false;
+  }else{
+    feedback(
+      "fb2",
+      "❌ Not yet. Check the for statement and make sure it prints 1 to 5.",
+      false
+    );
+    nextButton.disabled = true;
+  }
+}
+
+function check3(){
+  const answer = document.getElementById("prediction").value.trim();
+  const normalized = answer.replace(/\s/g, "");
+  const finishButton = document.getElementById("finish");
+  const out = document.getElementById("out3");
+
+  if(normalized === "[10,20,30,40,50]"){
+    addScore(3);
+    out.textContent = "✅ Prediction accepted!";
+    feedback(
+      "fb3",
+      "🎉 Correct prediction! You understood what append() does.",
+      true
+    );
+    finishButton.disabled = false;
+  }else{
+    out.textContent = "❌ Prediction not correct. Try again.";
+    feedback(
+      "fb3",
+      "❌ Not quite. Think about what append() does to a list.",
+      false
+    );
+    finishButton.disabled = true;
+  }
+}
+
+function finish(){
+  document.querySelectorAll(".challenge").forEach(x=>x.classList.remove("active"));
+  document.getElementById("complete").classList.add("active");
+  document.getElementById("finalScore").textContent=score;
+  document.getElementById("finalMessage").textContent=
+    score===3 ? "Excellent! You rescued every Python challenge! 🏆" :
+    score===2 ? "Great work! You solved most of the challenges." :
+    "Good effort! Review the challenges and try again.";
+  document.getElementById("progressText").textContent="Station Complete";
+  document.getElementById("bar").style.width="100%";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js"></script>
+<script>
+window.pyodide = null;
+
+window.addEventListener("load", async function(){
+  const status=document.getElementById("status");
+  const statusText=document.getElementById("statusText");
+
+  try{
+    statusText.textContent="Loading Python...";
+    window.pyodide=await loadPyodide();
+
+    status.classList.add("ready");
+    statusText.textContent="Python is ready!";
+    status.lastChild.textContent=" You can now run your Python programs.";
+
+    document.getElementById("run1").disabled=false;
+    document.getElementById("run2").disabled=false;
+  }catch(error){
+    statusText.textContent="Python could not load";
+    status.lastChild.textContent=" Please check your internet connection and refresh the page.";
+    console.error(error);
+  }
+});
+</script>
+</body>
+</html>
